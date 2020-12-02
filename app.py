@@ -7,13 +7,13 @@ from login import login_manager
 from routes import routes
 from events import register_events
 
-socketio = SocketIO(async_mode='eventlet')
+socketio = SocketIO(async_mode='eventlet', cors_allowed_origins='*')
 
 def create_app():
 	app = Flask('scythe-bidder')
 	app.secret_key = b'dQ8$76oMozy8'
 	app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-	app.debug = True
+	# app.debug = True
 
 	app.register_blueprint(routes)
 
@@ -32,4 +32,4 @@ def create_app():
 
 if __name__ == '__main__':
 	app = create_app()
-	socketio.run(app)
+	socketio.run(app, host="0.0.0.0")

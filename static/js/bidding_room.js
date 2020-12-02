@@ -4,7 +4,7 @@ const BidderState = {
 	ENDED: 3
 }
 
-var socket = io.connect('http://' + document.domain + ':' + location.port + '/room')
+var socket = io.connect(window.location.protocol + '//' + document.domain + ':' + location.port + '/room')
 
 var playerBox = $("#player-box")
 var bidBox = $("#bid-box")
@@ -94,7 +94,6 @@ function targetCombination(combination, bidValue){
 	currentBidTarget = combination
 	currentBidValue = bidValue
 
-	console.log(combinationEntries)
 	for(const k in combinationEntries){
 		combinationEntries[k].removeClass("active")
 	}
@@ -106,7 +105,6 @@ function targetCombination(combination, bidValue){
 
 var combinationEntries = {}
 function handleState(state){
-	console.log(state)
 	bidStateBox.empty()
 	resetBidStatus()
 
