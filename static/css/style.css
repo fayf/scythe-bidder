@@ -1,0 +1,18 @@
+.bidding-entry div{
+	/*border: 1px black solid;*/
+	display: table-cell;
+	padding: 5px;
+	vertical-align: middle;
+}
+.bidding-entry{
+	/*border: 1px black solid;*/
+	display: table-row;
+	padding: 5px;
+	vertical-align: middle;
+}
+
+
+.div-table {
+	display: table;
+	table-layout: fixed;
+}

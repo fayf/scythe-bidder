@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} {{ room.name }}{% endblock %}</h1>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-success" id="button-start" onclick="startBidding();" style="display: none;">Start!</button>
+
+        <button type="button" class="btn btn-primary" id="button-join" onclick="join();" style="display: none;">Join</button>
+
+        <button type="button" class="btn btn-danger" id="button-leave" onclick="leaveRoom();">Leave</button>
+    </div>
+
+    <h3>Players in room</h3>
+    <ul class="list-group" id="player-box">
+    </ul>
+
+    <br/>
+    <div class="h2 alert text-center" id="status-box"></div>
+    <div class="container div-table" id="bid-state-box">
+
+    </div>
+    <br/>
+    <div class="alert alert-info container" id="bid-box" style="display: none;">
+        <div class="col-sm-12 text-center h2" id="bid-target"></div>
+        <div class="text-center">
+            <button type="button" class="btn btn-secondary" id="bid-decrement" />-</button>
+            <input type="number" id="bid-amount" min="0" max="99" value="0"></input>
+            <button type="button" class="btn btn-secondary" id="bid-increment" />+</button>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-danger" id="bid-submit" onclick="submitBid()">Submit</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+       var roomOwner = {{ room.owner|tojson }}
+       var roomId = {{ room.name|tojson }}
+       var username ='{{ current_user.id }}'
+    </script>
+    <script src="{{ url_for('static', filename='js/bidding_room.js') }}"></script>
+{% endblock %}

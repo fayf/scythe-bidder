@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Scythe Bidder {% endblock %}</h1>
+    <p>Click on a room to join it, or create a new room.</p>
+    <h3>Todo:</h3>
+    <ul>
+        <li>Support for Fenris/Vesna</li>
+        <li>Customize bidding options for each room</li>
+        <li>Information about combination tiers</li>
+        <li>Information about player mats</li>
+        <li>UI improvements</li>
+    </ul>
+
+    <h3>Rooms:</h3>
+
+    {% if rooms %}
+        <div class="list-group">
+            {% for room in rooms.values(): %}
+                <a class="list-group-item list-group-item-action {{ 'list-group-item-primary' if current_user.id in room.bidder.players }}" href="{{url_for('routes.room', room_id=room.name)}}">{{ room.name }} ({{ room.bidder.players|length }} player(s))</a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-secondary">No rooms available.</div>
+    {% endif %}
+
+    <br/>
+    <form action="/room" method="post">
+        <div class="row">
+            <div class="col">
+                <input class="form-control" type="text" placeholder="Enter room name" name="roomName"></input>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="Submit">Create new room</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
