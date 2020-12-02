@@ -66,4 +66,8 @@ def room_new():
 @routes.route('/room/<room_id>')
 @login_required
 def room(room_id):
+	if room_id not in rooms:
+		flash('Room {0} not found'.format(room_id), 'warning')
+		return redirect(url_for('.index'))
+
 	return render_template('room.html', room=rooms[room_id])
