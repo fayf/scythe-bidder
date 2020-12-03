@@ -132,7 +132,7 @@ function handleState(state){
 	// List players
 	playerBox.empty()
 	state.players.forEach((player) => {
-		let entry = $("<li/>").addClass("list-group-item")
+		let entry = $("<div/>").addClass("text-center p-4 player-item")
 		entry.html(player)
 		playerBox.append(entry)
 	})

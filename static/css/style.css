@@ -1,18 +1,23 @@
 .bidding-entry div{
-	/*border: 1px black solid;*/
 	display: table-cell;
 	padding: 5px;
 	vertical-align: middle;
 }
+
 .bidding-entry{
-	/*border: 1px black solid;*/
 	display: table-row;
 	padding: 5px;
 	vertical-align: middle;
 }
 
-
 .div-table {
 	display: table;
 	table-layout: fixed;
+}
+
+.player-item {
+	border: 1px solid rgba(86,61,124,.15);
+	width: 25%;
+	font-weight: bold;
+	font-size: 1.5rem;
 }
